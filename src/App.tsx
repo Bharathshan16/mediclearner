@@ -35,18 +35,20 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
-            <Route path="/diabetes" element={<ProtectedRoute><DiabetesPrediction /></ProtectedRoute>} />
-            <Route path="/heart" element={<ProtectedRoute><HeartDiseasePrediction /></ProtectedRoute>} />
-            <Route path="/lung" element={<ProtectedRoute><LungCancerPrediction /></ProtectedRoute>} />
-            <Route path="/stroke" element={<ProtectedRoute><StrokeRiskPrediction /></ProtectedRoute>} />
-            <Route path="/chatbot" element={<ProtectedRoute><ChatbotService /></ProtectedRoute>} />
-            <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
+              <Route path="/diabetes" element={<ProtectedRoute><DiabetesPrediction /></ProtectedRoute>} />
+              <Route path="/heart" element={<ProtectedRoute><HeartDiseasePrediction /></ProtectedRoute>} />
+              <Route path="/lung" element={<ProtectedRoute><LungCancerPrediction /></ProtectedRoute>} />
+              <Route path="/stroke" element={<ProtectedRoute><StrokeRiskPrediction /></ProtectedRoute>} />
+              <Route path="/chatbot" element={<ProtectedRoute><ChatbotService /></ProtectedRoute>} />
+              <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
