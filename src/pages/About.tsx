@@ -9,17 +9,17 @@ const About = () => {
   const users = [
     {
       name: "Bharath Shanmugavel",
-      role: "Software Engineer",
-      email: "bharathshan@outlook.com",
-      bio: "Created this project to showcase my skills in building modern web applications with React and Tailwind CSS.",
-      joinedDate: "March 2025",
+      role: "System Engineer",
+      email: "bharath_shanmugavel@epam.com",
+      bio: "Jr. System Engineer",
+      joinedDate: "April 2026",
     },
     {
-      name: "V Praneeth",
-      role: "Deployer, Tester & Security Analyst",
-      email: "cb.en.u4cse22244@cb.students.amrita.edu",
-      bio: "Ensuring the platform is secure, properly deployed, and rigorously tested for reliability.",
-      joinedDate: "March 2025",
+      name: "Madhusmita Jena",
+      role: "System Engineer",
+      email: "madhusmita_jena@epam.com",
+      bio: "Jr. System Engineer",
+      joinedDate: "April 2026",
     },
   ];
 
@@ -137,12 +137,12 @@ const About = () => {
           <CardContent>
             <p className="mb-4">
               Have questions or suggestions? Reach out to our team at 
-              <a href="mailto:cb.en.u4cse22245@cb.students.amrita.edu" className="text-medical-600 ml-1 hover:underline">
+              <a href="mailto:bharath_shanmugavel@epam.com" className="text-medical-600 ml-1 hover:underline">
                 Bharath
               </a>
               {" "}or{" "}
-              <a href="mailto:cb.en.u4cse22244@cb.students.amrita.edu" className="text-medical-600 ml-1 hover:underline">
-                Praneeth
+              <a href="mailto:madhusmita_jena@epam.com" className="text-medical-600 ml-1 hover:underline">
+                Madhusmita
               </a>.
             </p>
           </CardContent>
