@@ -3,6 +3,5 @@ dist
 .git
 .dockerignore
 Dockerfile
-nginx.conf
 supabase/.branches
 supabase/.temp
