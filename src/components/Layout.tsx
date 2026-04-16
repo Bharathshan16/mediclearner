@@ -1,32 +1,23 @@
 
-import { ReactNode, Suspense, lazy, useEffect, useState } from "react";
+import { ReactNode, useEffect } from "react";
 import NavBar from "./NavBar";
+import FloatingChatbot from "./FloatingChatbot";
+import HistoryTab from "./history";
 import { initDatabase, initChatHistory } from "@/utils/database";
-
-const FloatingChatbot = lazy(() => import("./FloatingChatbot"));
-const HistoryTab = lazy(() => import("./history"));
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const [showDeferredUi, setShowDeferredUi] = useState(false);
-
+  // Initialize the database when the layout mounts
   useEffect(() => {
-    const storageTimer = window.setTimeout(() => {
-      void initDatabase();
-      void initChatHistory();
-    }, 0);
-
-    const deferredUiTimer = window.setTimeout(() => {
-      setShowDeferredUi(true);
-    }, 400);
-
-    return () => {
-      window.clearTimeout(storageTimer);
-      window.clearTimeout(deferredUiTimer);
+    const initializeStorage = async () => {
+      await initDatabase();
+      await initChatHistory();
     };
+    
+    initializeStorage();
   }, []);
   
   return (
@@ -44,12 +35,8 @@ const Layout = ({ children }: LayoutProps) => {
           </p>
         </div>
       </footer>
-      {showDeferredUi ? (
-        <Suspense fallback={null}>
-          <FloatingChatbot />
-          <HistoryTab />
-        </Suspense>
-      ) : null}
+      <FloatingChatbot />
+      <HistoryTab />
     </div>
   );
 };
